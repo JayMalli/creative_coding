@@ -170,6 +170,8 @@
           videoTitle.textContent = video.title;
           videoDescription.textContent = video.des;
           codeLink.href = video.link;
+          document.body.scrollTop = 0; // for safari
+          document.documentElement.scrollTop = 0; // for chrome,firefox,IE and Opera
         }
       }
     </script>
