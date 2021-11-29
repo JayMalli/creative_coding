@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creative Coding Videos</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="feature-img">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/creative-coding-92146.appspot.com/o/img%2Fballs_collision_with_surface.png?alt=media&token=373cf115-d5f4-47ed-bc5e-bc080bc32a56"
+              alt="pic1"
+              width="100%"
+              id="current-video-img"
+            />
+            <img
+              src="./assets/img/play.png"
+              alt="play"
+              class="play-btn"
+              id="playing-video-thumbnail"
+              onclick="playVideo()"
+            />
+          </div>
+        </div>
+        <div class="details">
+          <h1 id="details-title">Collision of balls with static surface</h1>
+          <p id="details-info">
+            It's show the freefall of balls when user click on canvas which is
+            created by Processing as well as how balls collide with the static
+            surface under certain conditions of physics.
+          </p>
+          <div class="code-link">
+            <a
+              href="https://github.com/JayMalli/balls_collision_with_surface"
+              id="code-link"
+              target="_blank"
+            >
+              <button class="code-btn">Code</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1 class="title">Creative Coding Examples</h1>
+    <div class="video-container" id="video-container">
+      <div class="video-thumbnail">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/creative-coding-92146.appspot.com/o/img%2Florenze_attractor.png?alt=media&token=71eff338-2958-434c-aa3c-bafcadc5fcaf"
+          alt="pic1"
+          class="video-img"
+          id="1"
+          onclick="fun(this.id)"
+        />
+      </div>
+      <div class="video-thumbnail">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/creative-coding-92146.appspot.com/o/img%2Fmotion_of_circle_on_bridge.png?alt=media&token=dd7b1ff3-ad5d-41b0-8ef7-562bcab0c406"
+          alt="pic2"
+          class="video-img"
+          id="2"
+          onclick="fun(this.id)"
+        />
+      </div>
+      <div class="video-thumbnail">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/creative-coding-92146.appspot.com/o/img%2Fmovement_of_cloth.png?alt=media&token=65e9516b-694e-4f85-8c81-274bb443b9db"
+          alt="pic3"
+          class="video-img"
+          id="3"
+          onclick="fun(this.id)"
+        />
+      </div>
+      <div class="video-thumbnail">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/creative-coding-92146.appspot.com/o/img%2Fstrike_the_ball.png?alt=media&token=88c3032f-ac29-41c7-8a2d-c51f7f2baee1"
+          alt="pic1"
+          class="video-img"
+          id="4"
+          onclick="fun(this.id)"
+        />
+      </div>
+    </div>
+    <div class="video-player" id="videoPlayer">
+      <video autoplay controls width="100%" id="myVideo">
+        <source
+          src="https://firebasestorage.googleapis.com/v0/b/creative-coding-92146.appspot.com/o/videos%2Fball_collision_with_surface.mp4?alt=media&token=4a1ea0fe-5570-4d2c-b16e-4bc8924941d7"
+          type="video/mp4"
+        />
+      </video>
+      <img
+        src="./assets/img/close.png"
+        alt="close"
+        class="close-btn"
+        onclick="stopVideo()"
+      />
+    </div>
+    <script>
+      imgList = [
+        {
+          id: 1,
+          src: "https://firebasestorage.googleapis.com/v0/b/creative-coding-92146.appspot.com/o/img%2Florenze_attractor.png?alt=media&token=71eff338-2958-434c-aa3c-bafcadc5fcaf",
+        },
+        {
+          id: 2,
+          src: "https://firebasestorage.googleapis.com/v0/b/creative-coding-92146.appspot.com/o/img%2Fmotion_of_circle_on_bridge.png?alt=media&token=dd7b1ff3-ad5d-41b0-8ef7-562bcab0c406",
+        },
+        {
+          id: 3,
+          src: "https://firebasestorage.googleapis.com/v0/b/creative-coding-92146.appspot.com/o/img%2Fmovement_of_cloth.png?alt=media&token=65e9516b-694e-4f85-8c81-274bb443b9db",
+        },
+        {
+          id: 4,
+          src: "https://firebasestorage.googleapis.com/v0/b/creative-coding-92146.appspot.com/o/img%2Fstrike_the_ball.png?alt=media&token=88c3032f-ac29-41c7-8a2d-c51f7f2baee1",
+        },
+      ];
+      const videoList = [
+        {
+          id: 1,
+          src: "https://firebasestorage.googleapis.com/v0/b/creative-coding-92146.appspot.com/o/videos%2Florenze_attractor.mp4?alt=media&token=0f55044f-1665-4a26-b3f1-d4456cab915e",
+          title: "Lorenz Attractor",
+          des: "The Lorenz attractor is an example of a strange attractor. Strange attractors are unique from other phase-space attractors in that one does not know exactly where on the attractor the system will be. Two points on the attractor that are near each other at one time will be arbitrarily far apart at later times.",
+          link: "https://github.com/JayMalli/lorenz_attractor",
+        },
+        {
+          id: 2,
+          src: "https://firebasestorage.googleapis.com/v0/b/creative-coding-92146.appspot.com/o/videos%2Fmotion_of_circle_on_bridge.mp4?alt=media&token=de9bfba1-cf7f-4aad-8da7-3ca9e9824154",
+          title: "Motion of a circle on a elastic bridge",
+          des: "It's show the motion of circle on a elastic bridge. where circle and bridge both are made by using particles,which follows the elasticity's proporties of toxicLibs library.",
+          link: "https://github.com/JayMalli/motion_of_circle_on_elastic_bridge",
+        },
+        {
+          id: 3,
+          src: "https://firebasestorage.googleapis.com/v0/b/creative-coding-92146.appspot.com/o/videos%2Fmovement_of_cloth.mp4?alt=media&token=1b05df23-729d-45fd-8f4f-5e8435eec4c4",
+          title: "Movement of cloth in the air",
+          des: "It's show the movement of cloth like the cloth hanging in air. It's created by Toxiclibs library of processing.",
+          link: "https://github.com/JayMalli/movement_of_cloth_in_air",
+        },
+        {
+          id: 4,
+          src: "https://firebasestorage.googleapis.com/v0/b/creative-coding-92146.appspot.com/o/videos%2Fstrike_the_ball.mp4?alt=media&token=9d487d6c-ad50-4ea3-902c-cf28eef6aff8",
+          title: "Strike the ball",
+          des: "It's a kind of game in which freefall of balls occured from top to bottom side and by using weapen we have to hit it.",
+          link: "https://github.com/JayMalli/strike_the_ball",
+        },
+      ];
+
+      let videoPlayer = document.getElementById("videoPlayer");
+      let myVideo = document.getElementById("myVideo");
+      let featureImage = document.getElementById("current-video-img");
+      let videoTitle = document.getElementById("details-title");
+      let videoDescription = document.getElementById("details-info");
+      let codeLink = document.getElementById("code-link");
+      function stopVideo() {
+        videoPlayer.style.display = "none";
+      }
+      function playVideo() {
+        videoPlayer.style.display = "block";
+      }
+      function fun(id) {
+        let [img] = imgList.filter((item) => item.id === parseInt(id));
+        let [video] = videoList.filter((item) => item.id === parseInt(id));
+        if (img && video) {
+          featureImage.src = img.src;
+          myVideo.src = video.src;
+          videoTitle.textContent = video.title;
+          videoDescription.textContent = video.des;
+          codeLink.href = video.link;
+        }
+      }
+    </script>
+  </body>
+</html>
